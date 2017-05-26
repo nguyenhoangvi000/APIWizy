@@ -80,12 +80,12 @@ apiRoutes.post('/login', function (req, res) {
                     expiresIn: 1
                 });
 
-                User.find({}, function (err, users) {
+                User.findOne({}, function (err, user) {
                     res.json({
                         success: true,
                         message: 'Token Generated',
                         token: token,
-                        result: users
+                        result: user
                     });
                 });
 
@@ -128,14 +128,6 @@ apiRoutes.use(function (req, res, next) {
     }
 });
 
-
-
-
-apiRoutes.get('/users', function (req, res) {
-    User.find({}, function (err, users) {
-        res.json(users);
-    });
-});
 
 
 
