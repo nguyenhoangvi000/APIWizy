@@ -81,11 +81,15 @@ apiRoutes.post('/login', function (req, res) {
                 });
 
                 User.findOne({}, function (err, user) {
+
+                    var result = { Username: user.username, Age: user.Age, Company: user.Company, Email: user.Email };
+
+
                     res.json({
                         success: true,
                         message: 'Token Generated',
                         token: token,
-                        result: user
+                        result: result
                     });
                 });
 
